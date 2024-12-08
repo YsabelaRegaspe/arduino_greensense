@@ -1,0 +1,16 @@
+CREATE TABLE `sensors_update` (
+    `id` varchar(255) NOT NULL,
+    `status_read_sensor_dht22` varchar(255) NOT NULL, 
+    `waste_level_percent` int(3) NOT NULL,
+    `waste_status` varchar(255) NOT NULL,
+    `temperature_celsius` float(10,2) NOT NULL,
+    `tempt_status` varchar(255) NOT NULL,
+    `humidity_percent` int(3) NOT NULL,
+    `humidity_status` varchar(255) NOT NULL,
+    `methane_level` float(10,2) NOT NULL,
+    `methane_status` varchar(255) NOT NULL,
+    `time` time NOT NULL,
+    `date` date NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `sensors_update`(`id`, `status_read_sensor_dht22`, `waste_level_percent`, `waste_status`, `temperature_celsius`, `tempt_status`, `humidity_percent`, `humidity_status`, `methane_level`, `methane_status`, `time`, `date`) VALUES ('esp32_01','SUCCESS','0','NORMAL LEVEL','0.00','NORMAL TEMPERATURE','0','NORMAL HUMIDITY','0.00','NORMAL LEVEL',NOW(),NOW())
