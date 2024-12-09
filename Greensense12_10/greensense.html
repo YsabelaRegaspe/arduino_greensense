@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenSense Dashboard</title>
+    <style>
+        /* CSS Styles */
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #fbfaf7;
+            color: #222e40;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .title {
+            position: absolute;
+            top: 5px;
+            left: 25%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 1; /* Ensure title is above other content */
+        }
+
+        .title h1 {
+          font-family: 'League Gothic', sans-serif;
+            color: #009950;
+            font-size: 110px;
+            font-weight: bold;
+            margin: 0; /* Remove any default margin */
+            font-style: italic; /* Make the text italic */
+
+        }
+
+        .title p {
+            color: #00bf63;
+            font-size: 16px;
+            margin-top: -10px;
+            text-align: start;
+        }
+
+        .logo {
+          width: 8%;
+    position: absolute;
+    height: auto;
+    left: 60px;
+    top: 27px;
+    }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding-top: 200px; /* Add space at the top to prevent overlap with title */
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff5e7;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            height: 195px;
+        }
+
+        .card1 {
+            width: 90%;
+            height: 195px;
+            background: #fff5e7;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card2 {
+            background: #fff5e7;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            height: 195px;
+            position: absolute;
+            width: 22.5%;
+            margin: 250px 0px 0px 408px;
+        }
+
+        .gauge-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 110%;
+        }
+
+        .gauge {
+            height: 345px;
+            width: 135px;
+            position: relative;
+            background: #f5f5f5;
+            border: 1px solid #ccc;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .fill {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 0;
+            transition: height 0.5s, background-color 0.5s;
+        }
+
+        .status-text {
+            margin-top: 10px;
+            font-size: 1.3rem;
+            color: #000;
+            margin-right: 275px;
+        }
+
+        #trashLevelText, #temperatureText, #ppm-text, #humidityText {
+            font-size: 2.1rem;
+            font-weight: bold;
+            color: #222e40;
+         
+        }
+      
+    .truckk{
+      display: flex;
+    position: absolute;
+    margin: 181px 0px 0px -67px;
+    }
+
+    .truck {
+      width: 80%;
+      margin: 0 auto;
+    }
+    .zerowastee{
+      display: flex;
+    position: absolute;
+    margin: 274px 0px 0px 770px;
+    }
+
+    .zerowaste {
+      width: 45%;
+      margin: 0 auto;
+    }
+    </style>
+</head>
+<body>
+    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap" rel="stylesheet">
+    <div class="container">
+      <img src="img/recycle.png" alt="Recycle Logo" class="logo">
+        <div class="title">
+            <h1>GREENSENSE</h1>
+            <p>Design and Development of Sustainable Waste<br>
+               Management through Internet of Things</p>
+        </div>
+
+        <div class="dashboard">
+            <div class="card1">
+                <h2>Waste Level</h2>
+                <p id="trashLevelText">--%</p>
+                <p class="status-text">Status: </p>
+            </div>
+
+            <div class="card">
+                <h2>Temperature Level (°C)</h2>
+                <p id="temperatureText">--°C</p>
+                <p class="status-text">Status:</p>
+            </div>
+            <div class="zerowastee">
+              <img src="img/zerowaste.png" alt="Zero Waste" class="zerowaste">
+            </div>
+
+            <div class="card">
+                <h2>Methane Level (PPM)</h2>
+                <div class="gauge-container">
+                    <p id="ppm-text">----.--ppm</p>
+                    <p class="status-text">Status:</p>
+                </div>
+            </div>
+            <div class="truckk">
+              <img src="img/truck.png" alt="Recycle Truck" class="truck">
+            </div>
+            <div class="card2">
+                <h2>Humidity (%)</h2>
+                <p id="humidityText">--%</p>
+                <p class="status-text">Status:</p>
+            </div>
+        </div>
+        
+
+    </div>
+
+    <script>
+        const trashFill = document.getElementById("trashFill");
+        const temperatureFill = document.getElementById("temperatureFill");
+        const methaneFill = document.getElementById("methaneFill");
+        const humidityFill = document.getElementById("humidityFill");
+
+        const trashLevelText = document.getElementById("trashLevelText");
+        const temperatureText = document.getElementById("temperatureText");
+        const humidityText = document.getElementById("humidityText");
+        const methanePPM = document.getElementById("ppm-text");
+
+        async function fetchData() {
+            try {
+                const response = await fetch('getdata.php');
+                const data = await response.json(); 
+                return data;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                return null; 
+            }
+        }
+
+        async function updateDashboard() {
+            const data = await fetchData();
+            if (!data) return; 
+
+            const trashLevel = data.trashLevel;
+            const temperature = data.temperature;
+            const methane = data.methane;
+            const humidity = data.humidity;
+
+            // Waste Level
+            trashLevelText.textContent = `${trashLevel.toFixed(2)}%`;
+            trashFill.style.height = `${trashLevel}%`;
+            trashFill.style.backgroundColor = trashLevel <= 25 ? "green" : trashLevel <= 50 ? "yellow" : "red";
+
+            // Temperature
+            temperatureText.textContent = `${temperature.toFixed(2)}°C`;
+            const tempPercentage = ((temperature - 20) / 25) * 100;
+            temperatureFill.style.width = `${tempPercentage}%`;
+            temperatureFill.style.backgroundColor = temperature <= 35 ? "green" : temperature <= 40 ? "yellow" : "red";
+
+            // Methane
+            methanePPM.textContent = `${methane.toFixed(2)} PPM`;
+            const methanePercentage = Math.min((methane / 10000) * 100, 100);
+            methaneFill.style.width = `${methanePercentage}%`;
+            methaneFill.style.backgroundColor = methane <= 1000 ? "green" : methane <= 5000 ? "yellow" : "red";
+
+            // Humidity
+            humidityText.textContent = `${humidity.toFixed(2)}%`;
+            humidityFill.style.width = `${humidity}%`;
+            humidityFill.style.backgroundColor = humidity <= 60 ? "green" : humidity <= 80 ? "yellow" : "red";
+        }
+
+        setInterval(updateDashboard, 2000);
+    </script>
+</body>
+</html>
