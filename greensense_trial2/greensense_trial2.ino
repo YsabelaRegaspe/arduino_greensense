@@ -159,9 +159,10 @@ void handleRoot() {
         }
         .title p {
             color: #00bf63;
-            font-size: 16px;
+            font-size: 19px;
             margin-top: -10px;
             text-align: start;
+            margin-left: 15px;
         }
         .logo {
             width: 8%;
@@ -227,7 +228,8 @@ void handleRoot() {
             margin-right: 275px;
         }
         #trashLevelText, #temperatureText, #ppm-text, #humidityText {
-            font-size: 3rem;
+            font-size: 3.5rem;
+            margin-top: 25px;
             font-weight: bold;
             color: #222e40;
         }
@@ -256,11 +258,12 @@ void handleRoot() {
     </script>
 </head>
 <body>
+    
     <div class="container">
-        
+        <img src="recycle.png" alt="Recycle Logo" class="logo" style="display:none">
         <div class="title">
             <h1>GREENSENSE</h1>
-            <p>Design and Development of Sustainable Waste<br>
+            <p>Design and Development of Sustainable Waste
                Management through Internet of Things</p>
         </div>
         <div class="dashboard">
